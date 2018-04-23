@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+ <button onclick="document.querySelector('hello-element').remove()">Remove Hello</button>
+    <script>
+  
+        HelloElement = Polymer({
+          is: "hello-element",
+          created: function() {
+              this.textContent = "Hello there";
+              console.log("Created: The element has been created.");
+          },
+          ready: function() {
+              console.log("Ready: Property values set and local DOM is initialized.");
+              this.message = "hello2";
+          },
+          attached: function() {
+              console.log("Attached: The element is attached to the document." +
+                  "Can be called multiple times.");
+          },
+          detached: function() {
+              console.log("Detached: The element has been detached");
+          },
+          factoryImpl: function() {
+              console.log("Factory Impl: Only invoked when creating an event using" + 
+                  " the constructor.")
+          },
+          attributeChanged: function(attrName, oldVal, newVal) {
+              console.log("AttributeChanged: Attribute " + attrName + 
+                  " oldValue: " + oldVal + " newValue: " + newVal);
+          }
+        });
+        
+        var el = new HelloElement();
+        document.querySelector("body").appendChild(el);
+        var el2 = document.createElement('hello-element');
+        document.querySelector("body").appendChild(el2);
+    
+    </script>
+
+  </body>
+</html>
