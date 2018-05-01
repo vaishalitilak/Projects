@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+  <alert-element></alert-element>
+      <dom-module id="alert-element">
+      <template>
+        <template is="dom-repeat" id="messageList" items="{{messages}}">
+            {{item}}
+            <button on-click="toggleSelection">Select</button>
+        </template>
+        
+        <array-selector id="selector" items="{{messages}}" 
+        selected="{{selected}}" multi toggle></array-selector>
+        
+        <div> Selected messages: </div>
+        <template is="dom-repeat" items="{{selected}}">
+            {{item}}
+        </template>
+      </template>
+    </dom-module>
+    <script>
+     
+        Polymer({
+          is: "alert-element",
+          properties:{
+              messages:{
+                type: Array,
+                value: function(){
+                  return [
+                    "Message 1",
+                    "Message 2"
+                  ];
+                }
+              }
+          },
+          toggleSelection: function(e) {
+            var item = this.$.messageList.itemForElement(e.target);
+            this.$.selector.select(item);
+          }
+        });
+     
+    </script>
+  </body>
+</html>

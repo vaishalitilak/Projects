@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+  <alert-element></alert-element>
+    <dom-module id="alert-element">
+      <template>
+        Messages:<br/>
+        <template is="dom-repeat" items="{{messages}}">
+          Index of message: {{index}}<br/>
+          Message: <b>{{item}}</b><br/>
+          ---------------<br/>
+        </template>
+        <template is="dom-repeat" items="{{messagePriorities}}" as="priority">
+          <p>
+            {{priority.name}}<br/>
+            <template is="dom-repeat" items="{{priority.levels}}" as="level" index-as="level_index">
+              {{level_index}} : {{level}}<br/>
+            </template>
+          </p>
+        </template>
+      </template>
+    </dom-module>
+    <script>
+    
+        Polymer({
+          is: "alert-element",
+          properties:{
+            messages:{
+              type: Array,
+              value: function(){
+                return ["Message 1", "Message 2"];
+              }
+            },
+            messagePriorities:{
+              type: Array,
+              value: function(){
+                return [{name: "Major", levels: ["Super major", "Kind of a major"]},
+                        {name: "Minor", levels: ["Minorish", "Good to have"]}
+                       ];
+              }
+            }
+          }
+      
+      });
+    </script>
+  </body>
+</html>

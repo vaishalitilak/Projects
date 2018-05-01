@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+  <alert-element></alert-element>
+  <dom-module id="alert-element">
+    <template>
+      <input value="{{filterString::input}}">
+      <br/>
+      <template is="dom-repeat" items="{{messages}}" as="message" 
+      filter="{{computeFilter(filterString)}}" sort="sortPriority">
+        {{message.text}}: {{message.priority}}
+        <br/>
+      </template>
+    </template>
+  </dom-module>
+  <script>
+    
+      Polymer({
+        is: "alert-element",
+        properties: {
+          messages: {
+            type: Array,
+            value: function() {
+              return [{
+                text: 'One Message',
+                priority: 2
+              }, {
+                text: 'Another Message',
+                priority: 5
+              }, {
+                text: 'Message',
+                priority: 4
+              }, {
+                text: 'Best Message',
+                priority: 3
+              }, {
+                text: 'Message 4',
+                priority: 1
+              }, {
+                text: 'Message 5',
+                priority: 4
+              }, ];
+            }
+          },
+          filterString: {
+            type: String
+          }
+        },
+        sortPriority: function(a, b) {
+          return a.priority - b.priority;
+        },
+        computeFilter: function(text) {
+          return function(message) {
+            return message.text.indexOf(text) > -1;
+          }
+        },
+        ready: function() {
+          //this.set('messages.2.priority', 'Major');
+        }
+      });
+    
+  </script>
+  </body>
+</html>

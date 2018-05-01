@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+    <alert-element></alert-element>
+    
+    <dom-module id="alert-element">
+      <template>
+          <input type="checkbox" checked$="{{messageChecked}}">
+          <div style$="{{messageStyle}}">
+              <div class$="{{messageClass}}">
+                  <a href$="{{messageUrl}}">
+                    <label for$="{{messageLabel}}">Label</label>
+                    <div data-bar$="{{messageLabel}}">Data-bar</div> 
+                  </a>
+              </div>
+          </div>
+      </template>
+    </dom-module>
+    
+    <script>
+      
+        Polymer({
+            is: "alert-element",
+            properties:{
+                messageClass:{
+                    type: String,
+                    value: "m-class"
+                },
+                messageChecked:{
+                    type: Boolean,
+                    value: true  
+                },
+                messageUrl:{
+                    stype: String,
+                    value: "http://xyz.com"  
+                },
+                messageStyle:{
+                    type: String,
+                    value: 'background-color: #efefef'
+                },
+                messageLabel:{
+                    type: String,
+                    value: "message-label"
+                }
+            },
+            ready: function(){
+            }
+        });
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+  <alert-element></alert-element>
+  <dom-module id="alert-element"> 
+    <template>
+      <input type='text' value="{{message::input}}"/>
+      [[message]]
+    </template> 
+  </dom-module>
+  
+  <script>
+      Polymer({ 
+        is: "alert-element",
+        properties: {
+          message: {
+            type: String,
+            value: "Success!",
+          }
+        },
+      });
+  </script>
+  </body>
+</html>

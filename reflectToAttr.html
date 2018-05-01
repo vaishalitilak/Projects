@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://polygit.org/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="https://polygit.org/components/polymer/polymer.html" />
+  </head>
+  <body>
+  <alert-element></alert-element>
+  
+  <dom-module id="alert-element">
+    <template>[[message]]</template>
+  </dom-module>
+  
+  <script>
+      Polymer({
+        is: "alert-element",
+        properties: {
+          message: {
+            type: String,
+            value: "Success!",
+            reflectToAttribute: true
+          },
+          isSuccess: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+          },
+          messageObj:{
+            type: Object,
+            value: {message:"hello", type:"success"},
+            reflectToAttribute: true
+          }
+        }
+      });
+   </script>
+  </body>
+</html>
