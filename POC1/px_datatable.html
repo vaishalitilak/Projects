@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Px Data table Example</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+  <link rel="import" href="../../bower_components/px-data-table/px-data-table-column.html">
+
+<body>
+    <dom-module id="local-element-demo">
+        <template>
+          <px-data-table language="en" striped  filterable sortable single-select show-column-chooser include-all-columns
+            table-data="{{demos}}">
+            <px-data-table-column name='first' sortable editable filterable>
+            </px-data-table-column>
+          </px-data-table>   
+        </template>
+      </dom-module>
+      
+      <script>
+        Polymer({
+          is: 'local-element-demo',
+          properties: {
+            demos: {
+              type: Array,
+              value: function(){
+                return [
+                {"first":"Vaishali", "last":"Tilak","email":"vaishalitilak1991@gmail.com"},
+                {"first":"Abc","last":"xyz","email":"abc@gmail.com"}]
+              }
+            },
+          }
+        });
+      </script>
+</body>
+</html>
