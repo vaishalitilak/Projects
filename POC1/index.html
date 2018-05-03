@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predix WebApp Starter</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  <link rel="import" href="datatable.html">
+
+<local-element-demo></local-element-demo>
+
+
+<px-data-table
+      table-data='[
+          {"first":"Vaishali", "last":"Tilak","email":"vaishalitilak1991@gmail.com"},
+          {"first":"Abc","last":"xyz","email":"abc@gmail.com"}]'
+      language="en"
+      striped
+      filterable
+      sortable
+      single-select
+      show-column-chooser
+      include-all-columns>
+
+      <px-data-table-column
+          name='first'
+          sortable
+          editable
+          filterable>
+      </px-data-table-column>
+</px-data-table>
+
+</body>
+</html>
