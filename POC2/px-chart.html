@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Predix WebApp Starter</title>
+<base href="/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table-column.html">
+<link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html"/>
+<body>
+<dom-module id="px-chart-ex">
+    <template>
+
+      <px-dropdown id="sensor-selection" 
+        items='[{"key":"item0","val":"val1"},
+          {"key":"Item1","val":"val2"}]'
+       button-style="tertiary">
+      </px-dropdown>
+
+      <div style='width:1000px'>
+        <px-vis-xy-chart
+        chart-data='[ {"T48A":1,"T48B":null,"Line":210},
+                      {"T48A":1.5,"T48B":null,"Line":250},
+                      {"T48A":2.5,"T48B":null,"Line":290},
+                      {"T48A":5,"T48B":null,"Line":220},
+                      {"T48A":6,"T48B":null,"Line":240},
+                      {"T48A":3,"T48B":110           },
+                      {"T48A":4,"T48B":130            }]'
+        show-tooltip="true"
+        width="675.046875" 
+        height="432.5"
+        margin='{"top":"30","bottom":"60","left":"70","right":"10"}'
+        x-axis-config='{"title":"X","labelPosition":"center","orientation":"bottom"}'
+        y-axis-config='{"title":"Y","labelPosition":"center","orientation":"left"}'
+        register-config='{"height":50,"type":"horizontal"}'
+        series-config='{"firstSeries":{"type":"line","name":"Series1","xAxisUnit":"Hz","yAxisUnit":"Hz","x":"T48A","y":"T48B"},
+                        "secondSeries":{"type":"line","name":"Series2","x":"T48A","y":"Line"}}'
+        default-series-config='{"x":"T48A","xMin":"dynamic","xMax":"dynamic","yMin":"dynamic","yMax":"dynamic"}'
+        time-data="Date">
+      </px-vis-xy-chart>
+    </div>
+    </template>
+  
+    <script>
+      Polymer({
+          is: 'px-chart-ex'
+        });
+        document.addEventListener('px-dropdown-selection-changed', function (evt) {
+           console.log( evt.detail.key);     
+        });
+    </script>
+  </dom-module>
+  
+</body>
+</html>
