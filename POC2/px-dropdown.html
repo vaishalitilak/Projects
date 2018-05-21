@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/px-dropdown/px-dropdown.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/marked-element/marked-element.html">
+ 
+<dom-module id="sample-view">
+    <template>
+   <style>
+       .left{
+           float: left;
+       }
+    </style>
+<px-card>
+<div class="left">
+        <px-dropdown id="dropdown" items='[{"key":"1","val":"iPhone"},
+        {"key":"2","val":"Android"},
+        {"key":"3","val":"Blackberry"},
+        {"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]' sort-mode="key" button-style="default" display-value="Select" disable-clear trigger-height="30"></px-dropdown>
+    </div>
+    <div class="left">
+     <button on-tap="toggleDropdown">click</button>
+    </div>
+    <div>
+        <input type="text" value="{{name::input}}">
+    </div>
+    </px-card>
+  </template>
+    <script>
+        Polymer({
+            is: 'sample-view',
+            properties: {
+                sampleValue: {
+                    type: String,
+                    observer: "valueChanged"
+                },
+                name: String
+            },
+            listeners: {
+                "dropdown.px-dropdown-selection-changed": "displayChanged"
+            },
+            observers: [
+                'update(name)'
+            ],
+            //this gets fired whenever the value of sampleValue changes
+            valueChanged: function(val) {
+                console.log(val);
+            },
+            //gets fired whenever the (px-dropdown-selection-changed) gets fired
+            displayChanged: function(val) {
+                console.log(val);
+            },
+            toggleDropdown: function() {
+                var drp = document.querySelector('px-dropdown');
+                drp.toggle(); // px-dropdown-method
+                this.sampleValue = "Vaishali";
+                //firing a custom event on button click
+                this.fire('custom-event', {
+                    "value": "something"
+                })
+            },
+            //gets fired whenever the value of name changes
+            update: function(val) {
+                console.log(val);
+            }
+        });
+    </script>
+</dom-module>
