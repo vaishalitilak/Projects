@@ -1,0 +1,36 @@
+<div class="row">
+
+<div class="col-sm-3 col-md-3">
+<div class="card  mb-3">
+    <div class="card-header">
+        Draggable Items
+        </div>
+    <div class="card-block scroll-list">
+        <div class="list-group">
+            <li class="list-group-item list-group-item-action" 
+                [draggable] *ngFor="let item of items"
+                [dragClass]="'active'" 
+                [dragTransitClass]="'active'" 
+                [dragData]="item">  
+                {{item.name}}
+            </li>
+        </div>
+    </div>
+
+</div>
+</div>
+<div class="col-sm-9 col-md-9">
+    <div class="card  mb-3" 
+    droppable [dragOverClass]="'drag-target-border-green'"
+        [dragHintClass]="'drag-hint'" (onDrop)="onDrop($event)">
+        <div class="card-header">Drop Items</div>
+        <div class="card-block scroll-list">
+        <table>
+            <tr *ngFor="let item of droppedItems" >
+            <td><div [innerHTML]="item.data | keepHtml"></div></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
