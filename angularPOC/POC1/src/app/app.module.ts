@@ -5,18 +5,18 @@ import { DragulaModule } from 'ng2-dragula';
 import { NgDragDropModule } from 'ng-drag-drop';
 
 import { AppComponent } from './app.component';
-import { CompleteDemoComponent } from './data/data.component';
 import { ItemComponent } from './items/item.component';
 import { EscapeHtmlPipe } from './items/pipe';
 import { DeleteItemComponent } from './delete/delete.component';
+import { ReusableComp } from './reusable/reusable.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompleteDemoComponent,
     ItemComponent,
     EscapeHtmlPipe,
-    DeleteItemComponent
+    DeleteItemComponent,
+    ReusableComp
   ],
   imports: [
     BrowserModule,
