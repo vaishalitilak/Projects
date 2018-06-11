@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { DropEvent } from "ng-drag-drop";
-
+import { IItems } from "./item";
 
 @Component({
     selector:'item-comp',
     templateUrl: 'item.component.html',
 })
 export class ItemComponent{
-  items = [
+  items : IItems[] = [
         {name: 'InputBox', type: 'text', data:'<input type="text" />'},
         {name: 'Button', type: 'submit', data:'<input type="button" value="Submit"/>'},
         {name: 'Dropdown', type: 'vegetable', data:'<h1>hello</h1>'},
